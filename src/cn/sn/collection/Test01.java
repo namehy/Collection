@@ -23,11 +23,14 @@ public class Test01 {
 
         System.out.println(list.size());//里面元素的长度，而不是数组的长度
 
-        System.out.println(list.isEmpty());
+        for (int i=0;i<list.size();i++){
+
+        }
+        //System.out.println(list.isEmpty());
         //list.remove("aaa");
         //System.out.println(list.size());
 
-        List list2=new ArrayList();
+       /* List list2=new ArrayList();
         list2.add("bbb");
         list2.add("ccc");
 
@@ -38,7 +41,7 @@ public class Test01 {
         String str= (String) list.get(0);
         System.out.println(str);
 
-        list.set(1,"ababa");
+        list.set(1,"ababa");*/
 
     }
     public static class Dog{
