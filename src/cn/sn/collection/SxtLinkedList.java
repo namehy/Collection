@@ -11,7 +11,10 @@ public class SxtLinkedList {
         SxtLinkedList list=new SxtLinkedList();
         list.add("aaa");
         list.add("bbb");
-        System.out.println(list.size);
+        list.add(1,"BBB");
+        list.add("ccc");
+        //list.remove(2);
+        System.out.println(list.get(1));
 
     }
 
@@ -40,6 +43,75 @@ public class SxtLinkedList {
 
     public int size(){
         return size;
+    }
+
+    public Object get(int index){
+        rangeCheck(index);
+
+        Node temp =node(index);
+        if (temp!=null){
+            return temp.obj;
+        }
+
+        return null;
+    }
+    public Node node(int index){
+        Node temp=null;
+        if(first!=null) {
+            temp=first;
+            for (int i=0;i<index;i++){
+                temp=temp.next;
+            }
+        }
+        return temp;
+    }
+
+    private void rangeCheck(int index){
+        if (index<0||index>=size){
+            try {
+                throw new Exception();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void remove(int index){
+        Node temp=node(index);
+
+        if(temp!=null){
+            Node up=temp.previous;
+            Node down=temp.next;
+            if(up==null){
+                first=down;
+                size--;
+            }else if (down==null){
+                last=up;
+                size--;
+            }
+            else {
+                up.next=down;
+                down.previous=up;
+                size--;
+            }
+        }
+    }
+
+    public void add(int index,Object obj){
+        Node temp=node(index);
+
+        Node newNode=new Node();
+        newNode.obj=obj;
+        if (temp!=null){
+            Node up=temp.previous;
+            up.next=newNode;
+            newNode.previous=up;
+
+            newNode.next=temp;
+            temp.previous=newNode;
+
+            size++;
+        }
     }
 
 }
