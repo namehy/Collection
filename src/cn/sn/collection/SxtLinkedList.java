@@ -18,7 +18,7 @@ public class SxtLinkedList {
 
     }
 
-    private void add(Object obj) {
+    public void add(Object obj) {
         if(first==null){
             Node n=new Node();
             n.setPrevious(null);
