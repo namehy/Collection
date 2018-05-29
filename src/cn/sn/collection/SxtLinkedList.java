@@ -1,5 +1,7 @@
 package cn.sn.collection;
 
+import java.util.LinkedList;
+
 public class SxtLinkedList {
 
     private Node first;
@@ -58,11 +60,20 @@ public class SxtLinkedList {
     public Node node(int index){
         Node temp=null;
         if(first!=null) {
-            temp=first;
-            for (int i=0;i<index;i++){
-                temp=temp.next;
+            if (index<(size>>1)){
+                temp=first;
+                for (int i=0;i<index;i++){
+                    temp=temp.next;
+                }
+            }else {
+                temp=last;
+                for (int i=size-1;i>index;i--){
+                    temp=temp.previous;
+                }
             }
+
         }
+        LinkedList l;
         return temp;
     }
 

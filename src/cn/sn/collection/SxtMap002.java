@@ -9,6 +9,10 @@ public class SxtMap002 {
     public void put(Object key,Object value){
         //System.out.println(key.hashCode());
         SxEntry e=new SxEntry(key,value);
+
+        int hash=key.hashCode();//负数控制
+        hash=hash<0?-hash:hash;
+
         int a=key.hashCode()%arr.length;
         if(arr[a]==null){
             LinkedList list=new LinkedList();
